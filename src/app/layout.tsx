@@ -51,7 +51,11 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
-    types: { "application/rss+xml": [{ url: "/rss.xml", title: `${profile.name} — Blog` }] },
+    types: {
+      "application/rss+xml": [
+        { url: "/rss.xml", title: `${profile.name} — Blog` },
+      ],
+    },
   },
   openGraph: {
     type: "website",
@@ -104,10 +108,25 @@ const personJsonLd = {
     "@type": "Organization",
     name: [x.organization, x.place].filter(Boolean).join(", "),
   })),
-  alumniOf: profile.education.map((e) => ({ "@type": "EducationalOrganization", name: e.institution })),
-  knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "Express.js", "PostgreSQL", "MongoDB"],
+  alumniOf: profile.education.map((e) => ({
+    "@type": "EducationalOrganization",
+    name: e.institution,
+  })),
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Express.js",
+    "PostgreSQL",
+    "MongoDB",
+  ],
   image: `${siteUrl}${profile.photo.full}`,
-  sameAs: [profile.contact.github, profile.contact.linkedin, profile.contact.x].filter(Boolean),
+  sameAs: [
+    profile.contact.github,
+    profile.contact.linkedin,
+    profile.contact.x,
+  ].filter(Boolean),
   mainEntityOfPage: { "@id": `${siteUrl}/#profile` },
 };
 
@@ -135,13 +154,21 @@ const profilePageJsonLd = {
   inLanguage: "en",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
       suppressHydrationWarning
       className={`${inter.variable} ${garamond.variable}`}
     >
+      <meta
+        name="google-site-verification"
+        content="yC9DhF5LieUELqc7vAiI-eTgiOTrJrvyNGz2g4vR_HM"
+      />
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
@@ -155,7 +182,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([personJsonLd, websiteJsonLd, profilePageJsonLd]).replace(/</g, "\\u003c"),
+            __html: JSON.stringify([
+              personJsonLd,
+              websiteJsonLd,
+              profilePageJsonLd,
+            ]).replace(/</g, "\\u003c"),
           }}
         />
         {children}
