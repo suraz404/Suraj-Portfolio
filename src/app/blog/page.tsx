@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   title: "Blog",
   description: `Notes by ${profile.name} on building full-stack web apps with React, Next.js, Node.js and PostgreSQL.`,
   alternates: { canonical: "/blog" },
+  openGraph: {
+    type: "website",
+    url: "/blog",
+    title: `${profile.name} — Blog`,
+    description: `Notes by ${profile.name} on building full-stack web apps with React, Next.js, Node.js and PostgreSQL.`,
+  },
 };
 
 export default function BlogIndex() {

@@ -27,14 +27,20 @@ export const metadata: Metadata = {
   title: { default: siteTitle, template: `%s — ${profile.name}` },
   description: siteDescription,
   creator: profile.name,
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
   applicationName: profile.name,
   authors: [{ name: profile.name }],
+  category: "technology",
+  formatDetection: { email: false, address: false, telephone: false },
   keywords: [
     "Suraj Agrahari",
     "Suraj Agrahari portfolio",
     "full-stack developer Nepal",
-    "Butwal",
+    "web developer Butwal Nepal",
     "full-stack developer",
     "Nepal",
     "React",
@@ -48,17 +54,26 @@ export const metadata: Metadata = {
     types: { "application/rss+xml": [{ url: "/rss.xml", title: `${profile.name} — Blog` }] },
   },
   openGraph: {
-    type: "profile",
+    type: "website",
     url: "/",
     title: siteTitle,
     description: siteDescription,
     siteName: profile.name,
     locale: "en_US",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: `${profile.name}, ${profile.role} in Nepal`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
+    images: ["/opengraph-image"],
   },
 };
 
@@ -77,8 +92,13 @@ const personJsonLd = {
   "@type": "Person",
   name: profile.name,
   jobTitle: profile.role,
+  description: siteDescription,
   url: siteUrl,
-  address: { "@type": "PostalAddress", addressCountry: "NP" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Butwal",
+    addressCountry: "NP",
+  },
   memberOf: profile.experience.map((x) => ({
     "@type": "Organization",
     name: [x.organization, x.place].filter(Boolean).join(", "),
@@ -87,14 +107,17 @@ const personJsonLd = {
   knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "Express.js", "PostgreSQL", "MongoDB"],
   image: `${siteUrl}${profile.photo.full}`,
   sameAs: [profile.contact.github, profile.contact.linkedin, profile.contact.x].filter(Boolean),
+  mainEntityOfPage: siteUrl,
 };
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: profile.name,
+  description: siteDescription,
   url: siteUrl,
   author: { "@type": "Person", name: profile.name },
+  inLanguage: "en",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       url: `/blog/${post.slug}`,
       title: post.title,
-      description: post.description,
-      publishedTime: post.date,
+      description: post.description || `Read ${post.title} by ${profile.name}.`,
+      ...(post.date ? { publishedTime: post.date } : {}),
       authors: [profile.name],
       tags: post.tags,
       ...(post.cover ? { images: [{ url: post.cover, alt: post.title }] } : {}),
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.description,
+      description: post.description || `Read ${post.title} by ${profile.name}.`,
       ...(post.cover ? { images: [post.cover] } : {}),
     },
   };
@@ -52,12 +52,14 @@ export default async function PostPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    description: post.description,
-    datePublished: post.date,
+    description: post.description || `Read ${post.title} by ${profile.name}.`,
+    ...(post.date ? { datePublished: post.date } : {}),
     keywords: post.tags.join(", "),
     url: `${siteUrl}/blog/${post.slug}`,
     mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
     author: { "@type": "Person", name: profile.name, url: siteUrl },
+    publisher: { "@type": "Person", name: profile.name, url: siteUrl },
+    inLanguage: "en",
     ...(post.cover ? { image: `${siteUrl}${post.cover}` } : {}),
   };
 
@@ -86,7 +88,7 @@ export default async function PostPage({ params }: Props) {
         </header>
         {post.cover ? (
           <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-xl bg-surface ring-1 ring-line">
-            <Image src={post.cover} alt="" fill priority sizes="(min-width: 768px) 672px, 100vw" className="object-cover" />
+            <Image src={post.cover} alt={`Cover image for ${post.title}`} fill priority sizes="(min-width: 768px) 672px, 100vw" className="object-cover" />
           </div>
         ) : null}
         {/* Posts are Markdown files from this repository, so the HTML is trusted. */}

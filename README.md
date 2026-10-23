@@ -78,8 +78,11 @@ Drafts only show in `npm run dev`.
 3. **Projects.** Bigawa, DevHub and W-Store live in `projects.ts`. Covers are in `public/projects/`
    (DevHub and W-Store are screenshots of the live sites in a browser frame). When Bigawa has a live
    link or repo, add it under `links` and swap in a real screenshot.
-4. **Site URL.** Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your domain.
+4. **Site URL.** Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your production domain.
    It is used for canonical URLs, the sitemap, RSS, structured data and Open Graph tags.
+5. **Search indexing.** After deploying to your real domain, verify ownership in Google Search Console
+   and Bing Webmaster Tools, then submit `https://surajagrahari.runs-on.dev/sitemap.xml`. Keep page titles,
+   descriptions, and blog post summaries specific and accurate; metadata cannot replace useful content.
 
 ## Deploy
 
@@ -87,14 +90,14 @@ Drafts only show in `npm run dev`.
 
 1. Push this folder to a GitHub repository.
 2. Import the repository at vercel.com/new. The framework is detected automatically.
-3. Add the environment variable `NEXT_PUBLIC_SITE_URL=https://your-domain.com`.
+3. Add the environment variable `NEXT_PUBLIC_SITE_URL=https://surajagrahari.runs-on.dev`.
 4. Deploy. Later pushes to `main` redeploy automatically.
 
 ### Any Node host
 
 ```bash
 npm ci
-NEXT_PUBLIC_SITE_URL=https://your-domain.com npm run build
+NEXT_PUBLIC_SITE_URL=https://surajagrahari.runs-on.dev npm run build
 npm start          # serves on PORT (default 3000)
 ```
 
