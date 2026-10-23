@@ -80,9 +80,22 @@ Drafts only show in `npm run dev`.
    link or repo, add it under `links` and swap in a real screenshot.
 4. **Site URL.** Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to your production domain.
    It is used for canonical URLs, the sitemap, RSS, structured data and Open Graph tags.
-5. **Search indexing.** After deploying to your real domain, verify ownership in Google Search Console
-   and Bing Webmaster Tools, then submit `https://surajagrahari.runs-on.dev/sitemap.xml`. Keep page titles,
-   descriptions, and blog post summaries specific and accurate; metadata cannot replace useful content.
+5. **Search indexing.** After deploying, follow the Google Search Console steps below and optionally
+   verify the site in Bing Webmaster Tools. Keep page titles, descriptions, and blog post summaries
+   specific and accurate; metadata cannot replace useful content.
+
+### Google Search Console
+
+1. Open [Google Search Console](https://search.google.com/search-console/) and add
+   `https://surajagrahari.runs-on.dev/` as a **URL-prefix property**. Complete one of Google's offered
+   ownership checks; a Domain property instead requires access to the domain's DNS records.
+2. In **Sitemaps**, submit `sitemap.xml` and confirm Google can fetch
+   `https://surajagrahari.runs-on.dev/sitemap.xml`.
+3. Use **URL Inspection** for `https://surajagrahari.runs-on.dev/`, run **Test live URL**, then select
+   **Request indexing** after a significant deploy. Repeat for `/blog` or important published posts.
+4. Check **Indexing → Pages** for excluded or errored URLs and **Settings → Crawl stats** for crawl
+   problems. Use **Performance → Search results** to filter the exact query `Suraj Agrahari` and monitor
+   impressions, clicks, click-through rate, and average position over time.
 
 ## Deploy
 

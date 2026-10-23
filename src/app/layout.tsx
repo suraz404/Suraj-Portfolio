@@ -90,6 +90,7 @@ const themeScript = `(()=>{try{const s=localStorage.getItem("theme");const d=s?s
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${siteUrl}/#person`,
   name: profile.name,
   jobTitle: profile.role,
   description: siteDescription,
@@ -107,16 +108,30 @@ const personJsonLd = {
   knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "Express.js", "PostgreSQL", "MongoDB"],
   image: `${siteUrl}${profile.photo.full}`,
   sameAs: [profile.contact.github, profile.contact.linkedin, profile.contact.x].filter(Boolean),
-  mainEntityOfPage: siteUrl,
+  mainEntityOfPage: { "@id": `${siteUrl}/#profile` },
 };
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
   name: profile.name,
   description: siteDescription,
   url: siteUrl,
-  author: { "@type": "Person", name: profile.name },
+  author: { "@id": `${siteUrl}/#person` },
+  mainEntity: { "@id": `${siteUrl}/#profile` },
+  inLanguage: "en",
+};
+
+const profilePageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${siteUrl}/#profile`,
+  url: siteUrl,
+  name: siteTitle,
+  description: siteDescription,
+  isPartOf: { "@id": `${siteUrl}/#website` },
+  mainEntity: { "@id": `${siteUrl}/#person` },
   inLanguage: "en",
 };
 
@@ -140,7 +155,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([personJsonLd, websiteJsonLd]).replace(/</g, "\\u003c"),
+            __html: JSON.stringify([personJsonLd, websiteJsonLd, profilePageJsonLd]).replace(/</g, "\\u003c"),
           }}
         />
         {children}
