@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { EB_Garamond, Inter } from "next/font/google";
 
-import { Cursor } from "@/components/cursor";
 import { profile } from "@/content/profile";
 import { siteDescription, siteTitle, siteUrl } from "@/lib/site";
 
@@ -190,7 +189,6 @@ export default function RootLayout({
           }}
         />
         {children}
-        <Cursor />
       </body>
     </html>
   );

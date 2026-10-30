@@ -148,18 +148,6 @@
   animation: rise-in 360ms var(--ease-out-soft) both;
 }
 
-/* Custom cursor: only active when the cursor component opts the page in. */
-html.has-cursor,
-html.has-cursor * {
-  cursor: none !important;
-}
-
-html.has-cursor input,
-html.has-cursor textarea,
-html.has-cursor [contenteditable="true"] {
-  cursor: text !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
