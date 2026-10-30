@@ -1,7 +1,7 @@
 import { profile } from "@/content/profile";
 
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.surajagrahari.com.np"
+  process.env.SITE_URL ?? "https://www.surajagrahari.com.np"
 ).replace(/\/$/, "");
 
 export const siteTitle = `${profile.name} — ${profile.role} in Nepal`;
