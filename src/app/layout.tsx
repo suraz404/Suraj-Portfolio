@@ -165,11 +165,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${garamond.variable}`}
     >
-      <meta
-        name="google-site-verification"
-        content="yC9DhF5LieUELqc7vAiI-eTgiOTrJrvyNGz2g4vR_HM"
-      />
       <head>
+        <meta
+          name="google-site-verification"
+          content="X3feSGw1s62S4H40vg9xF_ZjvjBFUztiGbEUvYah5Ok"
+        />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-dvh">
