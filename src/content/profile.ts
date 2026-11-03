@@ -85,7 +85,7 @@ export const profile = {
   /**
    * Experience, shown in two groups: "Work" and "Volunteering". Each organisation lists its roles, newest first.
    * To add a job or internship, add an entry like:
-   *   { kind: "Work", organization: "Company name", place: "City", roles: [{ title: "Intern", period: "2026 – Present", current: true, summary: "What you did." }] }
+   *   { kind: "Work", organization: "Company name", place: "City", roles: [{ title: "Intern", period: "2026 – Present", current: true, summary: ["What you did."] }] }
    */
   experience: [
     {
@@ -98,7 +98,11 @@ export const profile = {
           title: "Full-Stack Engineer Intern",
           period: "Nov 2026 – Present",
           current: true,
-          summary: "Building and shipping web applications across the frontend, backend, and database as part of the engineering team.",
+          summary: [
+            "Working on maintaining, testing, and improving a Point of Sale (POS) system to make sure everything runs smoothly.",
+            "Working closely with the development team to find and fix issues, improve existing features, and make the application more reliable.",
+            "Getting hands-on experience with real-world projects, team collaboration, and how software is developed and maintained in a production environment.",
+          ],
         },
       ],
     },
@@ -107,8 +111,17 @@ export const profile = {
       organization: "CSIT Association of Nepal",
       place: "Rupandehi",
       roles: [
-        { title: "Treasurer", period: "2026 – 2027", current: true },
-        { title: "Executive Member", period: "Previous tenure" },
+        {
+          title: "Treasurer",
+          period: "2026 – 2027",
+          current: true,
+          summary: ["Organizing and managing the association's financial matters."],
+        },
+        {
+          title: "Executive Member",
+          period: "Previous tenure",
+          summary: ["Contributed to organizing events, including the CSITAN Networking Bootcamp with 150+ students."],
+        },
       ],
     },
   ] as Array<{
@@ -117,7 +130,7 @@ export const profile = {
     place?: string;
     /** Optional company logo in /public. */
     logo?: string;
-    roles: Array<{ title: string; period: string; current?: boolean; summary?: string }>;
+    roles: Array<{ title: string; period: string; current?: boolean; summary?: string[] }>;
   }>,
 
   /**

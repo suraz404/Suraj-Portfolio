@@ -22,7 +22,15 @@ export function Experience() {
               logo: x.logo,
               meta: r.period,
               current: r.current,
-              extra: r.summary ? <p className="text-[15px] leading-relaxed text-pretty">{r.summary}</p> : undefined,
+              extra: r.summary?.length ? (
+                <ul className="list-disc space-y-2 pl-5 marker:text-faint">
+                  {r.summary.map((line) => (
+                    <li key={line} className="text-[15px] leading-relaxed text-pretty">
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+              ) : undefined,
             })),
           );
         return (
