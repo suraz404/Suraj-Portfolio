@@ -19,6 +19,7 @@ export function Experience() {
               kicker: x.organization,
               title: r.title,
               subtitle: x.place ?? "",
+              logo: x.logo,
               meta: r.period,
               current: r.current,
               extra: r.summary ? <p className="text-[15px] leading-relaxed text-pretty">{r.summary}</p> : undefined,

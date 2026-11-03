@@ -89,6 +89,20 @@ export const profile = {
    */
   experience: [
     {
+      kind: "Work",
+      organization: "Inovex Media & Tech",
+      place: "Butwal, Nepal",
+      logo: "/images/inovex-logo.png",
+      roles: [
+        {
+          title: "Full-Stack Engineer Intern",
+          period: "Nov 2026 – Present",
+          current: true,
+          summary: "Building and shipping web applications across the frontend, backend, and database as part of the engineering team.",
+        },
+      ],
+    },
+    {
       kind: "Volunteering",
       organization: "CSIT Association of Nepal",
       place: "Rupandehi",
@@ -101,6 +115,8 @@ export const profile = {
     kind: "Work" | "Volunteering";
     organization: string;
     place?: string;
+    /** Optional company logo in /public. */
+    logo?: string;
     roles: Array<{ title: string; period: string; current?: boolean; summary?: string }>;
   }>,
 

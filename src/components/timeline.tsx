@@ -10,6 +10,8 @@ export type TimelineItem = {
   /** Right-hand detail, e.g. "2026 – 2027" or "GPA 3.4". */
   meta?: string;
   current?: boolean;
+  /** Optional logo in /public, shown beside the kicker. */
+  logo?: string;
   /** Anything extra under the entry, such as a progress bar. */
   extra?: React.ReactNode;
 };
@@ -29,6 +31,10 @@ export function Timeline({ items, headingLevel = "h3" }: { items: TimelineItem[]
             )}
           />
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            {it.logo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={it.logo} alt="" width={40} height={40} className="size-10 rounded-md bg-white object-contain" />
+            ) : null}
             <span className="label">{it.kicker}</span>
             {it.current ? (
               <span className="rounded-full border border-signal/40 px-2 py-px text-[11px] text-signal">Current</span>
