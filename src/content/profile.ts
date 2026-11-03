@@ -93,6 +93,7 @@ export const profile = {
       organization: "Inovex Media & Tech",
       place: "Butwal, Nepal",
       logo: "/images/inovex-logo.png",
+      url: "https://www.inovexmediatech.com/",
       roles: [
         {
           title: "Full-Stack Engineer Intern",
@@ -130,6 +131,8 @@ export const profile = {
     place?: string;
     /** Optional company logo in /public. */
     logo?: string;
+    /** Optional company website; the organisation name links to it. */
+    url?: string;
     roles: Array<{ title: string; period: string; current?: boolean; summary?: string[] }>;
   }>,
 

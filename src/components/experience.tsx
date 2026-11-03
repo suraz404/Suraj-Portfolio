@@ -20,6 +20,7 @@ export function Experience() {
               title: r.title,
               subtitle: x.place ?? "",
               logo: x.logo,
+              href: x.url,
               meta: r.period,
               current: r.current,
               extra: r.summary?.length ? (
