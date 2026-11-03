@@ -111,6 +111,7 @@ export const profile = {
       kind: "Volunteering",
       organization: "CSIT Association of Nepal",
       place: "Rupandehi",
+      url: "https://rupandehi.csitan.org.np/",
       roles: [
         {
           title: "Treasurer",
